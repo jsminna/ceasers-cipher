@@ -18,31 +18,11 @@ window.addEventListener('load', () => {
   })();
 
   const encrypt = (text) => {
-    let cipherText = [];
-    text.split('').forEach(letter => {
-      if (/[a-zA-Z]$/g.test(letter)) {
-        let index = alphabets.indexOf(`${letter.toLowerCase()}`);
-        let cipherIndex = ((index + 3) % 26);
-        cipherText.push(alphabets[cipherIndex]);
-      } else {
-        cipherText.push(letter);
-      }
-    });
-    return cipherText.join('');
+    return text;
   };
 
   const decrypt = (text) => {
-    let cipherText = [];
-    text.split('').forEach(letter => {
-      if (/[a-zA-Z]$/g.test(letter)) {
-        let index = alphabets.indexOf(`${letter.toLowerCase()}`);
-        let cipherIndex = ((index - 3) % 26);
-        cipherText.push(alphabets[cipherIndex]);
-      } else {
-        cipherText.push(letter);
-      }
-    });
-    return cipherText.join('');
+    return text;
   };
 
   checkbox.addEventListener('change', (e) => {
