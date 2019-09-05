@@ -20,7 +20,7 @@ body {
   padding: 30px 20px;
 }
 
-input {
+.text {
   width: calc(100% - 20px);
   margin: 0 auto;
   border-radius: 12px;
@@ -28,4 +28,5 @@ input {
   outline: none;
   position: relative;
   padding: 15px 10px;
+  resize: none;
 }
