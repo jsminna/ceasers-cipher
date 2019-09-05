@@ -1,3 +1,5 @@
+const checkbox = document.querySelector('#check');
+const label = document.querySelector('.check__text');
 const input = document.querySelector('#input');
 const output = document.querySelector('#output');
 const alphabets = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
@@ -10,7 +12,8 @@ window.addEventListener('load', () => {
     let text = input.value;
     input.addEventListener('input', (key) => {
       text = input.value;
-      output.textContent = encrypt(text);
+      let checked = checkbox.checked;
+      output.textContent = !checked ? encrypt(text) : decrypt(text);
     });
   })();
 
@@ -27,4 +30,24 @@ window.addEventListener('load', () => {
     });
     return cipherText.join('');
   };
+
+  const decrypt = (text) => {
+    let cipherText = [];
+    text.split('').forEach(letter => {
+      if (/[a-zA-Z]$/g.test(letter)) {
+        let index = alphabets.indexOf(`${letter.toLowerCase()}`);
+        let cipherIndex = ((index - 3) % 26);
+        cipherText.push(alphabets[cipherIndex]);
+      } else {
+        cipherText.push(letter);
+      }
+    });
+    return cipherText.join('');
+  };
+
+  checkbox.addEventListener('change', (e) => {
+    let checked = e.target.checked;
+    label.textContent = !checked ? 'Encrypting...' : 'Decrypting...';
+  });
+
 });
